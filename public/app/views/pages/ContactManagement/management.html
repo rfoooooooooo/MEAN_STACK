@@ -1,0 +1,47 @@
+<div class="page-header">
+    <h1>User Login</h1>
+    </div>
+    <br>
+    
+     <!-- Loading Icon (Bootstrap) -->
+     <div class="jumbotron text-center" ng-show="management.loading">
+        <span class="glyphicon glyphicon-repeat spinner"></span>
+        <p>Loading....</p>
+    </div>
+    <br>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+        <strong>Contact Management</strong>
+    </div>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Job</th>
+            <th>Location</th>
+        </tr>
+        <tr ng-repeat="person in management.contacts">
+            <th>{{ person.name }}</th>
+            <th>{{ person.number }}</th>
+            <th>{{ person.job }}</th>
+            <th>{{ person.location }}</th>
+            <th>
+                <!-- Edit Button -->
+                <a href="/edit/{{ person._id }}">
+                    <button type="button" ng-show="management.editAccess" class="btn btn-primary">Edit</button>
+                </a>
+                <!-- Delete Button -->
+                <button type="button" ng-click="management.deleteUser(person.username);" ng-show="management.deleteAccess" class="btn btn-danger">Delete</button>
+            </th>
+        </tr>
+    </table>
+  </div>
+      
+    <div class="row show-hide-message" ng-show="management.successMsg" >
+        <div class="alert alert-success">{{ management.successMsg }}</div>
+    </div>
+    <br>
+    <div class="row show-hide-message" ng-show="management.errorMsg" >
+        <div class="alert alert-danger">{{ management.errorMsg }}</div>
+    </div>
+  
